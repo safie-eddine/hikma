@@ -28,122 +28,74 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SafeArea(
-          top: true,
-          child: Stack(
-            children: [
-              Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
-                child: Container(
-                  width: 331.0,
-                  height: 180.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10.0),
-                      bottomRight: Radius.circular(10.0),
-                      topLeft: Radius.circular(10.0),
-                      topRight: Radius.circular(10.0),
-                    ),
-                  ),
-                  child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/images/Group_81.png',
-                        width: 324.0,
-                        height: 182.0,
-                        fit: BoxFit.cover,
-                        alignment: Alignment(0.0, 0.0),
-                      ),
-                    ),
-                  ),
+    return Scaffold(
+      key: scaffoldKey,
+     // backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leadingWidth: 35,
+        elevation: 0.0,
+        toolbarHeight: 80,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: GestureDetector(
+              onTap: ()=> context.pushNamed('mainSearch'),
+              child: Image.asset('assets/images/search.png',width: 25,),
+            ),
+          )
+        ],
+        centerTitle: true,
+        title: Image.asset('assets/images/hikma.png',width: 50,),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Image.asset('assets/images/drawer.png',),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Image.asset('assets/images/Group_81.png',),
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: Text('تصفّح التطبيق', style: TextStyle(fontFamily: 'cairo',fontSize: 24),),
+            ),
+            SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    GestureDetector(
+                        onTap: ()=> context.pushNamed('searchFromBook'),
+                        child: Image.asset('assets/images/ebhathBook.png',width: 160,)),
+                    SizedBox(height: 20,),
+                    GestureDetector(
+                        onTap: (){},
+                        child: Image.asset('assets/images/prayTime.png',width: 160,)),
+                  ],
                 ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 200.0, 0.0, 0.0),
-                  child: GridView(
-                    padding: EdgeInsets.zero,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
-                      childAspectRatio: 1.0,
-                    ),
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      Container(
-                        width: 150.0,
-                        height: 250.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/Group_82.png',
-                              width: 150.0,
-                              height: 150.0,
-                              fit: BoxFit.cover,
-                              alignment: Alignment(0.0, 0.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(1.0, 0.0),
-                        child: Container(
-                          width: 150.0,
-                          height: 250.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'assets/images/Group_83.png',
-                              width: 200.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Container(
-                          width: 100.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                SizedBox(width: 20,),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: ()=> context.pushNamed('mainSearch'),
+                        child: Image.asset('assets/images/ebhath.png',width: 160,)),
+                    SizedBox(height: 20,),
+                    GestureDetector(
+                        onTap: (){},
+                        child: Image.asset('assets/images/about.png',width: 160,)),
+                  ],
                 ),
-              ),
-            ],
-          ),
+              ],
+            )
+          ],
         ),
       ),
     );
